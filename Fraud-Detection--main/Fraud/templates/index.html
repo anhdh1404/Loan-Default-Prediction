@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Credit Risk Assessment</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Credit Risk Assessment</h1>
+        {% if error %}
+            <div class="error">{{ error }}</div>
+        {% endif %}
+        <form action="/predict" method="post">
+            <div class="form-group">
+                <label for="LOAN">Loan Amount:</label>
+                <input type="number" id="LOAN" name="LOAN" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="MORTDUE">Mortgage Due:</label>
+                <input type="number" id="MORTDUE" name="MORTDUE" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="VALUE">Property Value:</label>
+                <input type="number" id="VALUE" name="VALUE" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="DEROG">Number of Derogatory Reports:</label>
+                <input type="number" id="DEROG" name="DEROG" min="0" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="DELINQ">Number of Delinquent Credit Lines:</label>
+                <input type="number" id="DELINQ" name="DELINQ" min="0" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="CLAGE">Oldest Credit Line Age (months):</label>
+                <input type="number" id="CLAGE" name="CLAGE" min="0" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="NINQ">Number of Recent Credit Inquiries:</label>
+                <input type="number" id="NINQ" name="NINQ" min="0" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="CLNO">Number of Credit Lines:</label>
+                <input type="number" id="CLNO" name="CLNO" min="0" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="DEBTINC">Debt-to-Income Ratio:</label>
+                <input type="number" id="DEBTINC" name="DEBTINC" step="0.01" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="YOJ">Years at Current Job:</label>
+                <input type="number" id="YOJ" name="YOJ" min="0" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="JOB">Job Type:</label>
+                <select id="JOB" name="JOB" required>
+                    {% for job in job_options %}
+                        <option value="{{ job }}">{{ job }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            
+            <button type="submit">Assess Credit Risk</button>
+        </form>
+    </div>
+</body>
+</html>

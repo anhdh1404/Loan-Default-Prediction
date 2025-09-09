@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Credit Risk Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Credit Risk Assessment Result</h1>
+        
+        <div class="result-card {% if 'HIGH RISK' in result.prediction %}high-risk{% else %}low-risk{% endif %}">
+            <h2>Prediction: {{ result.prediction }}</h2>
+            <p>Probability: {{ result.probability }}</p>
+        </div>
+        
+        <div class="input-summary">
+            <h3>Input Summary:</h3>
+            <ul>
+                <li>Loan Amount: ${{ result.input_data.LOAN }}</li>
+                <li>Mortgage Due: ${{ result.input_data.MORTDUE }}</li>
+                <li>Property Value: ${{ result.input_data.VALUE }}</li>
+                <li>Derogatory Reports: {{ result.input_data.DEROG }}</li>
+                <li>Delinquent Credit Lines: {{ result.input_data.DELINQ }}</li>
+                <li>Credit Line Age: {{ result.input_data.CLAGE }} months</li>
+                <li>Recent Credit Inquiries: {{ result.input_data.NINQ }}</li>
+                <li>Number of Credit Lines: {{ result.input_data.CLNO }}</li>
+                <li>Debt-to-Income Ratio: {{ result.input_data.DEBTINC }}%</li>
+                <li>Years at Current Job: {{ result.input_data.YOJ }}</li>
+                <li>Job Type: {{ result.input_data.JOB }}</li>
+            </ul>
+        </div>
+        
+        <a href="/" class="back-button">Assess Another Application</a>
+    </div>
+</body>
+</html>
