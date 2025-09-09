@@ -1,0 +1,4 @@
+# Loan-Default-Prediction
+This project addresses the critical task of loan default prediction to support financial institutions in minimizing credit losses and optimizing lending strategies. Using the HMEQ dataset, we conducted comprehensive data preprocessing (EDA, missing value imputation, outlier treatment, feature engineering, class balancing) and evaluated multiple supervised ML models, including Kernel SVM, Logistic Regression, Decision Tree, Random Forest, XGBoost, LightGBM, and CatBoost.
+
+Our experiments demonstrate that advanced models—particularly Kernel SVM and ensemble methods (XGBoost, CatBoost, LightGBM)—achieve superior performance across accuracy, precision, recall, F1-score, and AUC. The results highlight the value of machine learning in credit risk assessment, offering a scalable, data-driven solution for financial decision-making.
